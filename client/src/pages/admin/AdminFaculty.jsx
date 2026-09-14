@@ -214,7 +214,7 @@ function AdminFaculty() {
     imagePath?.startsWith("http")
       ? imagePath
       : imagePath
-        ? `http://localhost:5000${imagePath}`
+        ? `https://classattendanceportal.onrender.com${imagePath}`
         : "https://i.pravatar.cc/80?img=12";
 
   return (

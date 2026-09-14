@@ -207,7 +207,7 @@ export default function FacultyDashboard() {
               <img
                 src={
                   profile.profileImage
-                    ? `http://localhost:5000${profile.profileImage}`
+                    ? `https://classattendanceportal.onrender.com${profile.profileImage}`
                     : "https://i.pravatar.cc/80?img=12"
                 }
                 alt="Faculty"

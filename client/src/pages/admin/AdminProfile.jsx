@@ -64,7 +64,7 @@ function AdminProfile() {
 
     return imagePath.startsWith("http")
       ? imagePath
-      : `http://localhost:5000${imagePath}`;
+      : `https://classattendanceportal.onrender.com${imagePath}`;
   };
 
   const handleProfileImageChange = async (event) => {

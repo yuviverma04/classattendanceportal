@@ -31,7 +31,7 @@ function FacultyProfile() {
 
     return imagePath.startsWith("http")
       ? imagePath
-      : `http://localhost:5000${imagePath}`;
+      : `https://classattendanceportal.onrender.com${imagePath}`;
   };
 
   const fetchFacultyProfile = async () => {
