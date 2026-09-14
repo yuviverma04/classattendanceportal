@@ -27,7 +27,7 @@ function Splash() {
       <div className="splash-card">
 
         <div className="logo">
-          <img src="/src/assets/images/Picsart_26-09-03_23-34-42-203.png"alt="" />
+          <p>🎓</p>
         </div>
 
         <h1>Class Attendance Portal</h1>

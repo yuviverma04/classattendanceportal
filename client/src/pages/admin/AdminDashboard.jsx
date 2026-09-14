@@ -85,7 +85,7 @@ function AdminDashboard() {
       return imagePath;
     }
 
-    return `http://localhost:5000${imagePath}`;
+    return `https://classattendanceportal.onrender.com${imagePath}`;
   };
 
   /* =========================
