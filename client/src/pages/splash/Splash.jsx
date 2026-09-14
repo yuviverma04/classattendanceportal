@@ -27,7 +27,7 @@ function Splash() {
       <div className="splash-card">
 
         <div className="logo">
-          <p>🎓</p>
+          <p style={{ fontSize: "3rem" }}>🎓</p>
         </div>
 
         <h1>Class Attendance Portal</h1>
