@@ -1,0 +1,498 @@
+/* ========================= */
+/* GLOBAL */
+/* ========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#f4f7fb;
+}
+
+.dashboard{
+  display:flex;
+  min-height:100vh;
+  background:#f4f7fb;
+}
+
+/* ========================= */
+/* SIDEBAR */
+/* ========================= */
+
+.sidebar{
+  width:240px;
+  background:#111827;
+  color:#fff;
+  padding:25px 18px;
+  position:fixed;
+  height:100vh;
+  transition:.3s;
+}
+
+.sidebar h2{
+  text-align:center;
+  margin-bottom:8px;
+}
+
+.sidebar h4{
+  text-align:center;
+  font-size:14px;
+  opacity:.9;
+  margin-bottom:30px;
+}
+
+.sidebar ul{
+  list-style:none;
+}
+
+.sidebar li{
+  padding:14px 16px;
+  border-radius:8px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:.3s;
+  font-weight:500;
+}
+
+.sidebar li:hover,
+.sidebar .active{
+  background:#2563eb;
+}
+
+.close-btn{
+  display:none;
+}
+
+/* ========================= */
+/* MAIN */
+/* ========================= */
+
+.main{
+  flex:1;
+  margin-left:240px;
+  padding:30px;
+}
+
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#fff;
+  padding:18px 25px;
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.left-nav{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.menu-btn{
+  display:none;
+  font-size:24px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.theme-btn{
+  border:none;
+  background:#eef3ff;
+  padding:10px 12px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.profile img{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.profile h4{
+  font-size:15px;
+}
+
+.profile span{
+  font-size:12px;
+  color:#777;
+}
+
+/* ========================= */
+/* WELCOME */
+/* ========================= */
+
+.welcome-card{
+  margin-top:30px;
+  background:#fff;
+  padding:28px;
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.welcome-card h1{
+  color:#2563eb;
+  margin-bottom:10px;
+}
+
+/* ========================= */
+/* CARDS */
+/* ========================= */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:25px;
+}
+
+.card{
+  color:#fff;
+  padding:22px;
+  border-radius:12px;
+  box-shadow:0 6px 15px rgba(0,0,0,.12);
+}
+
+.card h3{
+  font-size:15px;
+  margin-bottom:12px;
+}
+
+.card h1{
+  font-size:34px;
+}
+
+.card span{
+  font-size:13px;
+}
+
+.blue{background:#2563eb;}
+.green{background:#198754;}
+.red{background:#dc3545;}
+.yellow{background:#f59e0b;}
+
+/* ========================= */
+/* QUICK ACTION */
+/* ========================= */
+
+.quick-actions{
+  display:flex;
+  gap:18px;
+  margin-top:28px;
+}
+
+.quick-actions button,
+.save-btn{
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  padding:12px 24px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
+}
+
+.quick-actions button:hover,
+.save-btn:hover{
+  opacity:.9;
+}
+
+/* ========================= */
+/* ATTENDANCE */
+/* ========================= */
+
+.attendance-control,
+.table-box,
+.summary-box{
+  margin-top:30px;
+  background:#fff;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.control-box{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  margin-top:18px;
+}
+
+.input-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.input-group label{
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+.input-group input,
+.input-group select{
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:15px;
+}
+
+/* ========================= */
+/* TABLE */
+/* ========================= */
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:18px;
+}
+
+thead{
+  background:#111827;
+  color:#fff;
+}
+
+th,
+td{
+  padding:14px;
+  text-align:left;
+  border-bottom:1px solid #eee;
+}
+
+tr:hover{
+  background:#f8fbff;
+}
+
+.present-btn,
+.absent-btn{
+  border:none;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-right:8px;
+  font-size:13px;
+}
+
+.present-btn{
+  background:#198754;
+}
+
+.absent-btn{
+  background:#dc3545;
+}
+
+/* ========================= */
+/* SUMMARY */
+/* ========================= */
+
+.summary-box{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.summary-card{
+  text-align:center;
+  color:#fff;
+  padding:22px;
+  border-radius:10px;
+}
+
+.green-card{background:#198754;}
+.red-card{background:#dc3545;}
+.blue-card{background:#0d6efd;}
+
+.summary-card h1{
+  font-size:34px;
+}
+
+/* ========================= */
+/* PROFILE */
+/* ========================= */
+
+.profile-page-card,
+.password-card{
+  margin-top:30px;
+  background:#fff;
+  padding:28px;
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.profile-page-card{
+  display:flex;
+  gap:40px;
+  align-items:center;
+}
+
+.profile-photo-section{
+  width:220px;
+  text-align:center;
+}
+
+.large-profile-image img{
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #0d6efd;
+  margin-bottom:18px;
+}
+
+.profile-upload-btn{
+  display:inline-block;
+  background:#0d6efd;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.profile-information{
+  flex:1;
+}
+
+.profile-grid,
+.password-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  margin-top:18px;
+}
+
+.profile-grid label,
+.password-grid label{
+  display:block;
+  margin-bottom:7px;
+  font-weight:600;
+}
+
+.profile-grid input,
+.password-grid input{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+/* ========================= */
+/* DARK MODE */
+/* ========================= */
+
+.dashboard.dark{
+  background:#111827;
+}
+
+.dashboard.dark .main{
+  background:#111827;
+}
+
+.dashboard.dark .navbar,
+.dashboard.dark .welcome-card,
+.dashboard.dark .attendance-control,
+.dashboard.dark .table-box,
+.dashboard.dark .summary-box,
+.dashboard.dark .profile-page-card,
+.dashboard.dark .password-card{
+  background:#1f2937;
+  color:#fff;
+}
+
+.dashboard.dark input,
+.dashboard.dark select{
+  background:#111827;
+  color:#fff;
+  border:1px solid #374151;
+}
+
+.dashboard.dark td{
+  border-color:#374151;
+}
+
+.dashboard.dark tr:hover{
+  background:#273449;
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+  .sidebar{
+    left:-260px;
+    z-index:1000;
+  }
+
+  .sidebar.show{
+    left:0;
+  }
+
+  .close-btn{
+    display:block;
+    position:absolute;
+    right:18px;
+    top:18px;
+    background:none;
+    color:#fff;
+    border:none;
+    font-size:22px;
+    cursor:pointer;
+  }
+
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.4);
+    z-index:999;
+  }
+
+  .main{
+    margin-left:0;
+    padding:18px;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .profile-page-card{
+    flex-direction:column;
+  }
+
+  .profile-grid,
+  .password-grid,
+  .summary-box{
+    grid-template-columns:1fr;
+  }
+
+  .quick-actions{
+    flex-direction:column;
+  }
+
+}
