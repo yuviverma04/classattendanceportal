@@ -214,7 +214,7 @@ function AdminFaculty() {
     imagePath?.startsWith("http")
       ? imagePath
       : imagePath
-        ? `https://classattendanceportal.onrender.com${imagePath}`
+        ? `https://classattendanceportal-production.up.railway.app${imagePath}`
         : "https://i.pravatar.cc/80?img=12";
 
   return (

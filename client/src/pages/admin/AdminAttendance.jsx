@@ -42,7 +42,7 @@ function AdminAttendance() {
     imagePath?.startsWith("http")
       ? imagePath
       : imagePath
-        ? `https://classattendanceportal.onrender.com${imagePath}`
+        ? `https://classattendanceportal-production.up.railway.app${imagePath}`
         : "https://i.pravatar.cc/80?img=12";
 
   // ==========================================

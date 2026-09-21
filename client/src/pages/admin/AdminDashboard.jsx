@@ -85,7 +85,7 @@ function AdminDashboard() {
       return imagePath;
     }
 
-    return `https://classattendanceportal.onrender.com${imagePath}`;
+    return `https://classattendanceportal-production.up.railway.app${imagePath}`;
   };
 
   /* =========================

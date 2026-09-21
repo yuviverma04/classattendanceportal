@@ -64,7 +64,7 @@ function AdminProfile() {
 
     return imagePath.startsWith("http")
       ? imagePath
-      : `https://classattendanceportal.onrender.com${imagePath}`;
+      : `https://classattendanceportal-production.up.railway.app${imagePath}`;
   };
 
   const handleProfileImageChange = async (event) => {
