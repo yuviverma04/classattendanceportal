@@ -1,3 +1,4 @@
+const dns = require("dns");
 const nodemailer = require("nodemailer");
 
 const emailUser = process.env.EMAIL_USER;
@@ -7,20 +8,34 @@ if (!emailUser || !emailPass) {
   console.error("Email service is not configured. Set EMAIL_USER and EMAIL_PASS.");
 }
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  auth: {
-    user: emailUser,
-    pass: emailPass,
-  },
-  family: 4,
-});
+let transporter;
 
-const sendMail = (mailOptions) =>
-  transporter.sendMail({
+const getTransporter = async () => {
+  if (transporter) {
+    return transporter;
+  }
+
+  const smtpIp = (await dns.promises.resolve4("smtp.gmail.com"))[0];
+
+  transporter = nodemailer.createTransport({
+    host: smtpIp,
+    port: 587,
+    secure: false,
+    requireTLS: true,
+    tls: {
+      servername: "smtp.gmail.com",
+    },
+    auth: {
+      user: emailUser,
+      pass: emailPass,
+    },
+  });
+
+  return transporter;
+};
+
+const sendMail = async (mailOptions) =>
+  (await getTransporter()).sendMail({
     from: `"Class Attendance Portal" <${emailUser}>`,
     ...mailOptions,
   });
@@ -30,7 +45,7 @@ const verifyEmailConfig = async () => {
     throw new Error("EMAIL_USER and EMAIL_PASS are required for email delivery");
   }
 
-  await transporter.verify();
+  await (await getTransporter()).verify();
   console.log("Email service is ready");
 };
 
