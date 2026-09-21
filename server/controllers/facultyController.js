@@ -1,19 +1,9 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const nodemailer = require("nodemailer");
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const { sendMail } = require("../services/mailer");
 
 const sendWelcomeEmail = async ({ name, email, password, role }) => {
-  try {
-    await transporter.sendMail({
-      from: `"Class Attendance Portal" <${process.env.EMAIL_USER}>`,
+  await sendMail({
       to: email,
       subject: `Welcome to Class Attendance Portal - ${role}`,
       html: `
@@ -27,10 +17,7 @@ const sendWelcomeEmail = async ({ name, email, password, role }) => {
           <p>Please log in and change your password after your first login.</p>
         </div>
       `,
-    });
-  } catch (error) {
-    console.error("Welcome email error:", error);
-  }
+  });
 };
 
 // ==========================================

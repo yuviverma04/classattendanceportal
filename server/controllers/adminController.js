@@ -2,20 +2,6 @@ const User = require("../models/User");
 const Subject = require("../models/Subject");
 const Attendance = require("../models/Attendance");
 const bcrypt = require("bcryptjs");
-const nodemailer = require("nodemailer");
-
-
-// =====================================================
-// EMAIL TRANSPORTER
-// =====================================================
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
 
 // ===============================
 // ADMIN DASHBOARD
@@ -381,7 +367,6 @@ const updateAdminProfileImage = async (req, res) => {
 };
 
 module.exports = {
-  transporter,
   getAdminDashboard,
   getAllStudents,
   getAllFaculty,

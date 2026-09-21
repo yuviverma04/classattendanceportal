@@ -4,25 +4,7 @@ dns.setDefaultResultOrder("ipv4first");
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
-
-// =====================================================
-// EMAIL TRANSPORTER
-// =====================================================
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-
-  family: 4,
-});
+const { sendMail } = require("../services/mailer");
 
 // =====================================================
 // REGISTER USER
@@ -169,8 +151,7 @@ const forgotPassword = async (req, res) => {
     await user.save();
 
     // Send email
-    await transporter.sendMail({
-      from: `"Class Attendance Portal" <${process.env.EMAIL_USER}>`,
+    await sendMail({
       to: user.email,
       subject: "Class Attendance Portal - Password Reset OTP",
 

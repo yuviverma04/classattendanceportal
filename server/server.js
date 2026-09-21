@@ -15,6 +15,7 @@ dotenv.config({
 
 const express = require("express");
 const cors = require("cors");
+const { verifyEmailConfig } = require("./services/mailer");
 
 // ==========================================
 // DATABASE
@@ -170,4 +171,8 @@ app.listen(PORT, () => {
   console.log(
     `🚀 Server Running on Port ${PORT}`
   );
+
+  verifyEmailConfig().catch((error) => {
+    console.error("Email service verification failed:", error.message);
+  });
 });
