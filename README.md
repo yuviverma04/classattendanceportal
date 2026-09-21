@@ -13,6 +13,18 @@ EMAIL_SECURE=true
 
 `EMAIL_PASS` must be a Google App Password, not the normal Gmail password. Enable 2-Step Verification on the Gmail account, create an App Password, and use the 16-character value without spaces. After changing the variables, redeploy the backend and check its startup logs for `Email service is ready`.
 
+## Railway deployment
+
+Create a Railway service from this GitHub repository. Railway will use `railway.json` to install and start the backend from `server`. Add the server variables above, plus `MONGODB_URI`, `JWT_SECRET`, and `PORT` (Railway can also provide `PORT` automatically). After deployment, copy the generated Railway public URL.
+
+In the Vercel frontend project, add:
+
+```text
+VITE_API_URL=https://your-railway-service.up.railway.app
+```
+
+Then redeploy the frontend. Do not include `/api` in `VITE_API_URL`; the client adds it automatically.
+
 If Gmail SMTP is blocked by the hosting network, use Resend over HTTPS instead:
 
 ```text
