@@ -2,6 +2,10 @@ const nodemailer = require("nodemailer");
 
 const emailUser = process.env.EMAIL_USER;
 const emailPass = process.env.EMAIL_PASS;
+const emailPort = Number(process.env.EMAIL_PORT || 465);
+const emailSecure = process.env.EMAIL_SECURE
+  ? process.env.EMAIL_SECURE === "true"
+  : emailPort === 465;
 
 if (!emailUser || !emailPass) {
   console.error("Email service is not configured. Set EMAIL_USER and EMAIL_PASS.");
@@ -9,9 +13,9 @@ if (!emailUser || !emailPass) {
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
+  port: emailPort,
+  secure: emailSecure,
+  ...(emailSecure ? {} : { requireTLS: true }),
   auth: {
     user: emailUser,
     pass: emailPass,
