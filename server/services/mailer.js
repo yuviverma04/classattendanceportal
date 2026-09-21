@@ -1,4 +1,7 @@
+const dns = require("dns");
 const nodemailer = require("nodemailer");
+
+dns.setDefaultResultOrder("ipv4first");
 
 const emailUser = process.env.EMAIL_USER;
 const emailPass = process.env.EMAIL_PASS;
@@ -16,6 +19,8 @@ const transporter = nodemailer.createTransport({
   port: emailPort,
   secure: emailSecure,
   ...(emailSecure ? {} : { requireTLS: true }),
+  lookup: (hostname, options, callback) =>
+    dns.lookup(hostname, { ...options, family: 4 }, callback),
   auth: {
     user: emailUser,
     pass: emailPass,
