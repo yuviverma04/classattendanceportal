@@ -1,3 +1,9 @@
+const nodeCrypto = require("crypto");
+
+if (!globalThis.crypto) {
+  globalThis.crypto = nodeCrypto.webcrypto;
+}
+
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
