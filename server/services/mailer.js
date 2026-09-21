@@ -126,7 +126,36 @@ const sendWithGmailApi = async ({ to, subject, html, text }) => {
   }
 };
 
+const sendWithBrevo = async ({ to, subject, html, text }) => {
+  if (!process.env.BREVO_API_KEY || !emailFrom) {
+    throw new Error("BREVO_API_KEY and EMAIL_FROM are required for Brevo");
+  }
+
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "api-key": process.env.BREVO_API_KEY,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      sender: { email: emailFrom, name: "Class Attendance Portal" },
+      to: [{ email: to }],
+      subject,
+      htmlContent: html || `<p>${text || ""}</p>`,
+    }),
+  });
+
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(`Brevo email failed (${response.status}): ${details}`);
+  }
+};
+
 const sendMail = async (mailOptions) => {
+  if (emailProvider === "brevo") {
+    return sendWithBrevo(mailOptions);
+  }
+
   if (emailProvider === "gmail-api") {
     return sendWithGmailApi(mailOptions);
   }
@@ -142,6 +171,15 @@ const sendMail = async (mailOptions) => {
 };
 
 const verifyEmailConfig = async () => {
+  if (emailProvider === "brevo") {
+    if (!process.env.BREVO_API_KEY || !emailFrom) {
+      throw new Error("BREVO_API_KEY and EMAIL_FROM are required for Brevo");
+    }
+
+    console.log("Brevo email service is configured");
+    return;
+  }
+
   if (emailProvider === "gmail-api") {
     const required = [
       "GMAIL_CLIENT_ID",

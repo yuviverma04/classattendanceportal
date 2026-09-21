@@ -34,3 +34,13 @@ GMAIL_REFRESH_TOKEN=your_google_oauth_refresh_token
 ```
 
 Create a Google Cloud OAuth client, enable the Gmail API, authorize the account with the `https://www.googleapis.com/auth/gmail.send` scope, and add the resulting refresh token to Render. Do not commit these secrets to GitHub.
+
+The simpler alternative is Brevo API mode. It uses HTTPS and does not require Google OAuth:
+
+```text
+EMAIL_PROVIDER=brevo
+EMAIL_FROM=verifybyotp@gmail.com
+BREVO_API_KEY=your_brevo_api_key
+```
+
+Create a free Brevo account, verify `verifybyotp@gmail.com` under Senders, create an API key, add these variables to Render, and redeploy. Remove old Gmail API variables if they are no longer needed.
